@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display:'Syne',serif; --font-body:'DM Sans',sans-serif; --font-mono:'JetBrains Mono',monospace;
+  --bg-primary:#f8fafc; --bg-secondary:#f1f5f9; --bg-card:#ffffff;
+  --text-primary:#0f172a; --text-secondary:#475569; --text-muted:#94a3b8;
+  --border:rgba(15,23,42,0.08); --accent:#0ea5e9; --accent-soft:rgba(14,165,233,0.1); --glow:rgba(14,165,233,0.2);
+}
+.dark {
+  --bg-primary:#040d1a; --bg-secondary:#071428; --bg-card:#0d2045;
+  --text-primary:#e2e8f0; --text-secondary:#94a3b8; --text-muted:#475569;
+  --border:rgba(56,189,248,0.1); --accent:#38bdf8; --accent-soft:rgba(56,189,248,0.08); --glow:rgba(56,189,248,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background-color:var(--bg-primary);color:var(--text-primary);line-height:1.7;transition:background-color 0.3s ease,color 0.3s ease;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.15;color:var(--text-primary)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg-secondary)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:10px}
+::selection{background:var(--accent);color:white}
+
+@layer components {
+  .section-container{@apply max-w-6xl mx-auto px-6 lg:px-8}
+  .section-title{font-family:var(--font-display);@apply text-4xl lg:text-5xl font-bold mb-3}
+  .section-subtitle{@apply text-base max-w-xl;color:var(--text-secondary)}
+  .card-base{background:var(--bg-card);border:1px solid var(--border);@apply rounded-2xl p-6 transition-all duration-300}
+  .card-hover{@apply hover:shadow-lg hover:-translate-y-1}
+  .card-hover:hover{box-shadow:0 20px 60px -10px var(--glow);border-color:var(--accent)}
+  .btn-primary{background:var(--accent);@apply text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 inline-flex items-center gap-2}
+  .btn-primary:hover{filter:brightness(1.1);box-shadow:0 8px 30px var(--glow);transform:translateY(-1px)}
+  .btn-outline{border:1.5px solid var(--accent);color:var(--accent);@apply px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 inline-flex items-center gap-2}
+  .btn-outline:hover{background:var(--accent-soft);transform:translateY(-1px)}
+  .gradient-text{background:linear-gradient(135deg,var(--accent) 0%,#818cf8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .accent-line{@apply h-1 w-12 rounded-full;background:var(--accent)}
+  .tag-pill{background:var(--accent-soft);color:var(--accent);@apply px-3 py-1 rounded-full text-xs font-medium font-mono}
+  .noise-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100;opacity:0.025}
+  .bg-grid{background-image:linear-gradient(rgba(56,189,248,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,0.04) 1px,transparent 1px);background-size:60px 60px}
+}
+.glow-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;animation:float 8s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0px) scale(1)}50%{transform:translateY(-30px) scale(1.05)}}
